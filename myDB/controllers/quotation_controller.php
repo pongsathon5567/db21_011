@@ -67,11 +67,11 @@ class QuotationController
         $quotation = Quotation::get($id);
         require_once("./views/quotation/DeleteDetail.php");
     }
-    public function delete()
+    public function deletefrom()
     {
-        $id=$_GET['quotationID'];
-        Quotation::delete($id);
-        QuotationController::index();
+        $id=$_GET['quotationDetail_ID'];
+        detailQuotation::delete($id);
+        detailQuotationController::index();
     }
     
 }
