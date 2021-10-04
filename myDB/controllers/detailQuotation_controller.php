@@ -1,17 +1,18 @@
 <?php
 class detailQuotationController
 {
-    public function index()
+    public function indexQuoDetail()
     {
+        echo "hi";
         $quotationDetailList = detailQuotation::getAll();
-        require_once("./views/quotationDetail/quotationDetail_Index.php");
+        require_once("./views/detailQuotation/quotationDetail_Index.php");
     }
 
     public function searchfrom()
     {
         $key=$_GET['key'];
         $quotationDetailList = detailQuotation::search($key);
-        require_once("./views/quotation/quotationDetail_Index.php");
+        require_once("./views/detailQuotation/quotationDetail_Index.php");
     }
 
     public function addQuoDetail()
@@ -27,23 +28,21 @@ class detailQuotationController
 
         detailQuotation::Add($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$C_id,$P_id);
 
-        detailQuotationController::index();
+        detailQuotationController::indexQuoDetail();
     }
 
     public function newQuoDetail()
     {
-        $employeeList = Employee::getAll();
-        $customerList = Customer::getAll();
-        require_once("./views/quotation/newQuoDetail.php");
+        $stockofproductList = stockofproduct::getAll();
+        require_once("./views/detailQuotation/newQuoDetail.php");
     }
     
     public function updateQuoDetail()
     {
         $id=$_GET['quotationID'];
         $quotation = detailQuotation::get($id);
-        $employeeList = Employee::getAll();
-        $customerList = Customer::getAll();
-        require_once("./views/quotation/UpdateDetail.php");
+        $stockofproductList = stockofproduct::getAll();
+        require_once("./views/detailQuotation/updatefrom.php");
     }
 
     public function updatefrom()
@@ -53,27 +52,26 @@ class detailQuotationController
         $DetailNumber = $_GET['DetailNumber'];
         $DetailUnit = $_GET['DetailUnit'];
         $DetailPrint = $_GET['DetailPrint'];
-        $C_id = $_GET['colorID'];
-        $P_id = $_GET['proID'];
+        $stockID = $_GET['stockID'];
         $oldID=$_GET['oldID'];
 
 
-        detailQuotation::updatefrom($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$C_id,$P_id,$oldID);
+        detailQuotation::updatefrom($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$stockID,$oldID);
 
-        detailQuotationController::index();
+        detailQuotationController::indexQuoDetail();
     }
 
     public function deleteConfirm()
     {
         $id=$_GET['quotationDetail_ID'];
         $detailQuotation = detailQuotation::get($id);
-        require_once("./views/quotation/deleteConfirm.php");
+        require_once("./views/detailQuotation/deleteConfirm.php");
     }
     public function deletefrom()
     {
         $id=$_GET['quotationID'];
-        detailQuotation::delete($id);
-        detailQuotationController::index();
+        detailQuotation::deletefrom($id);
+        detailQuotationController::indexQuoDetail();
     }
     
 }

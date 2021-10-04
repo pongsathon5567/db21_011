@@ -1,24 +1,23 @@
 <?php
 class stockofproduct
 {
-    public $Cid,$Pid;
+    public $PCid;
 
-    public function __construct($id,$Pid)
+    public function __construct($PCid)
     {
-        $this->Cid = $Cid;
-        $this->Pid = $Pid;
+        $this->PCid = $PCid;
     }
 
     public static function getAll()
     {
         $customerList = [];
         require("connection_connect.php");
-        $sql = "SELECT * FROM proColorCom";
+        $sql = "SELECT * FROM quotationDetail";
         $result = $conn->query($sql);
         while ($my_row = $result->fetch_assoc()) {
-            $colorID = $my_row[colorID];
-            $proID = $my_row[proID];
-            $stockofproductList[] = new stockofproduct($colorID,$proID);
+            $stockID = $my_row[stockID];
+           
+            $stockofproductList[] = new stockofproduct($stockID);
         }
         require("connection_close.php");
         return $stockofproductList;

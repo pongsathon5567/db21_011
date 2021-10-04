@@ -6,8 +6,9 @@
     <label>number<input type = "text" name = "detailNumber"></label><br>
 
     <label>storkID<select name ="storkID">
-        <?php foreach($quotation_list as $quo){echo "<option value = $quo->id>
-        $quo->name</option>";}?>
+        <?php foreach($stockofproductList as $stock){echo "<option value = $stock->id>
+        $stock->name</option>";}
+        ?>
     </select></label><br>
     <label>unit<input type = "text" name = "detailUnit"></label><br>
 

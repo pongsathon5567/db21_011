@@ -1,6 +1,10 @@
 <table border = 1>
-    <tr> <td>quotationDetail_ID</td><td>quotationID</td><td>DetailNumber</td>
-    <td>stockID</td><td>DetailUnit</td><td>DetailPrint</td> </tr>
+    <tr> <td>quotationDetail_ID</td>
+    <td>quotationID</td>
+    <td>DetailNumber</td>
+    <td>stockID</td>
+    <td>DetailUnit</td>
+    <td>DetailPrint</td> </tr>
     
     <p>"Welcome to quotationDetail "</p>
 ADD QUOTATION 
@@ -15,7 +19,7 @@ search</button>
 <br /> 
 </form>
 
-    <?php foreach($quotationDetail_list as $detailQuotation){
+    <?php foreach($detailQuotationlist as $detailQuotation){
         echo "<tr><td>$detailQuotation->quotationDetail_ID</td>
         <td>$detailQuotation->quotationID</td>
         <td>$detailQuotation->DetailNumber</td>
@@ -23,9 +27,10 @@ search</button>
         <td>$detailQuotation->DetailUnit</td>
         <td>$detailQuotation->DetailPrint</td>
         
-        <td><a href=?controller=quotation&action=UpdateDetail&quotationID=$detailQuotation->quotationDetail_ID>update</a></td>
-        <td><a href=?controller=quotation&action=DeleteDetail&quotationID=$detailQuotation->quotationDetail_ID>delete</a></td>
+        <td><a href=?controller=detailQuotation&action=updatefrom&quotationDetail_ID=$detailQuotation->quotationDetail_ID>update</a></td>
+        <td><a href=?controller=detailQuotation&action=deleteComfirm&quotationDetail_ID=$detailQuotation->quotationDetail_ID>delete</a></td>
         </tr>"; 
     }
-    echo "</table>"
+    echo "</table>";
     ?>
+    <p>ธนาวุฒิ จิรสุวินัย 6220502124</p>

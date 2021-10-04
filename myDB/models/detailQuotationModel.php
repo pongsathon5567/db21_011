@@ -27,24 +27,21 @@ class detailQuotation{
             $DetailNumber = $my_row[DetailNumber];
             $DetailUnit = $my_row[DetailUnit];
             $DetailPrint = $my_row[DetailPrint];
-            $C_id = $my_row[colorID];
-            $P_id = $my_row[proID];
-            $C_name = $my_row[colorName];
-            $P_name = $my_row[proName];
+            $stockID = $my_row[stockID];
 
-            $quotationDetailList[] = new detailQuotation($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$C_id,$P_id,$C_name,$P_name);
+            $quotationDetailList[] = new detailQuotation($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$stockID);
         }
         require("connection_close.php");
         return $quotationDetailList;
     }
 
-    public static function Add($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$C_id,$P_id)
+    public static function Add($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$stockID)
     { 
        require("connection_connect.php");
        $float = (float)$DetailNumber;
        $float = (float)$DetailUnit;
        $float = (float)$DetailPrint;
-       $sql = "INSERT INTO `quotationDetail` (`quotationDetail_ID`, `quotationID`, `DetailNumber`, `DetailUnit`, `DetailPrint`, `colorID`, `proID`) VALUES ('$Q_did','$Q_id','$DetailNumber','$DetailUnit','$DetailPrint','$C_id','$P_id')";
+       $sql = "INSERT INTO `quotationDetail` (`quotationDetail_ID`, `quotationID`, `DetailNumber`, `DetailUnit`, `DetailPrint`, `stockID`) VALUES ('$Q_did','$Q_id','$DetailNumber','$DetailUnit','$DetailPrint','$stockID')";
        $result = $conn->query($sql);
        require("connection_close.php");
        return  ;
@@ -53,7 +50,7 @@ class detailQuotation{
     public static function search($key)
     {
         require("connection_connect.php");
-        $sql="SELECT * FROM quotationDetail NATURAL JOIN color NATURAL JOIN product WHERE (quotationDetail_ID like '%$key%' or quotationID like '%$key%' or DetailNumber like '%$key%' or DetailUnit like '%$key%' or DetailPrint like '%$key%' or colorID like '%$key%' or proID like '%$key%')and quotationID=quotationID";
+        $sql="SELECT * FROM quotationDetail NATURAL JOIN color NATURAL JOIN product WHERE (quotationDetail_ID like '%$key%' or quotationID like '%$key%' or DetailNumber like '%$key%' or DetailUnit like '%$key%' or DetailPrint like '%$key%' or stockID like '%$key%')and quotationID=quotationID";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -62,12 +59,9 @@ class detailQuotation{
             $DetailNumber = $my_row[DetailNumber];
             $DetailUnit = $my_row[DetailUnit];
             $DetailPrint = $my_row[DetailPrint];
-            $C_id = $my_row[colorID];
-            $P_id = $my_row[proID];
-            $C_name = $my_row[colorName];
-            $P_name = $my_row[proName];
+            $stockID = $my_row[stockID];
 
-            $quotationDetailList[] = new detailQuotation($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$C_id,$P_id,$C_name,$P_name);
+            $quotationDetailList[] = new detailQuotation($Q_did,$Q_id,$DetailNumber,$DetailUnit,$DetailPrint,$stockID);
         }
         require("connection_close.php");
         return $quotationDetailList;
@@ -77,7 +71,7 @@ class detailQuotation{
     public static function get($id)
     {
         require("connection_connect.php");
-        $sql="SELECT * FROM quotation NATURAL JOIN employee NATURAL JOIN customer WHERE quotationID='$id' and cusID = cusID";
+        $sql="SELECT * FROM quotationDetail NATURAL JOIN color NATURAL JOIN product WHERE quotationDetail_ID='$id';
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
         $Q_did = $my_row[quotationDetail_ID]
@@ -99,13 +93,13 @@ class detailQuotation{
          echo "hi";
         require("connection_connect.php");
         $sql="UPDATE `quotationDetail` SET `quotationDetail_ID`='$Q_did',`quotationID`='$Q_id',
-        `DetailNumber`='$DetailNumber',`DetailUnit`='$DetailUnit',`DetailPrint`='$DetailPrint' WHERE quotationDetailID = '$oldID'";
+        `DetailNumber`='$DetailNumber',`DetailUnit`='$DetailUnit',`DetailPrint`='$DetailPrint' WHERE quotationDetail_ID = '$oldID'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return ;
      }
 
-     public static function delete($id)
+     public static function deletefrom($id)
      {
          require("connection_connect.php");
          $sql = "DELETE FROM quotationDetail WHERE quotationDetailID = '$id'";
@@ -113,4 +107,4 @@ class detailQuotation{
          require("connection_close.php");
          return ;
      }
-}?>
+}
