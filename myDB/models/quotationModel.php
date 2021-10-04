@@ -4,7 +4,7 @@ class Quotation
     public $quotationID,$date,$cusName,$empName,$cusAddr; 
     public $cusID,$empID,$condiPrice,$deposit;
 
-    public function __construct($quotationID,$date,$cusName,$cusAddr,$cusPhone,$empName,$cusID,$empID,$condiPrice,$deposit)
+    public function __construct($quotationID,$date,$cusName,$empName,$cusAddr,$cusPhone,$cusID,$empID,$condiPrice,$deposit)
     {
         $this->quotationID = $quotationID;
         $this->date = $date;
@@ -104,9 +104,10 @@ class Quotation
     }
     public static function Update($Q_ID,$Q_DATE,$CUS_ID,$EMP_ID,$Q_CONDIPRICE,$Q_DEPOSIT,$oldID)
      {
+         echo "hi";
         require("connection_connect.php");
         $sql="UPDATE `quotation` SET `quotationID`='$Q_ID',`date`='$Q_DATE',
-        `empID`='$Emp_name',`cusID`='$CUS_ID',`condiPrice`='$Q_CONDIPRICE',`deposit`='$Q_DEPOSIT' WHERE quotationID = '$oldID'";
+        `empID`='$EMP_ID',`cusID`='$CUS_ID',`condiPrice`='$Q_CONDIPRICE',`deposit`='$Q_DEPOSIT' WHERE quotationID = '$oldID'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return ;
