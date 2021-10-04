@@ -4,12 +4,12 @@
     
     <p>"Welcome to quotationDetail "</p>
 ADD QUOTATION 
-<a href=?controller=quotation&action=newQuoDetail>CLICK</a><br>
+<a href=?controller=detailQuotation&action=newQuoDetail>CLICK</a><br>
 <br />
     
     <form method="get" action="">
         <input type="text" name="key">
-        <input type="hidden" name="controller" value="quotationDetail">
+        <input type="hidden" name="controller" value="detailQuotation">
         <button type="submit" name="action" value="search">
 search</button>
 <br /> 
