@@ -7,7 +7,7 @@ class detailQuotationController
         require_once("./views/quotationDetail/quotationDetail_Index.php");
     }
 
-    public function search()
+    public function searchfrom()
     {
         $key=$_GET['key'];
         $quotationDetailList = detailQuotation::search($key);
@@ -37,7 +37,7 @@ class detailQuotationController
         require_once("./views/quotation/newQuoDetail.php");
     }
     
-    public function UpdateQuoDetail()
+    public function updateQuoDetail()
     {
         $id=$_GET['quotationID'];
         $quotation = detailQuotation::get($id);
@@ -63,13 +63,13 @@ class detailQuotationController
         detailQuotationController::index();
     }
 
-    public function DeleteConfirm()
+    public function deleteConfirm()
     {
         $id=$_GET['quotationDetail_ID'];
         $detailQuotation = detailQuotation::get($id);
         require_once("./views/quotation/deleteConfirm.php");
     }
-    public function delete()
+    public function deletefrom()
     {
         $id=$_GET['quotationID'];
         detailQuotation::delete($id);
