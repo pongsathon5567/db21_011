@@ -10,16 +10,17 @@
     ?>
     </select></label><br>
 
-<label>เงื่อนไขชำระ(เครดิต/มัดจำ)<input type="text" name="condiPrice"/></label><br>
-
-<label>มัดจำ/เครดิต<input type="text" name="deposit"/></label><br>
-    <p> (ถ้าเงื่อนไขการชำระเป็น'เครดิต' ให้กรอกเลข '0')</p>
-
 <label>ชื่อพนักงาน <select name="empName">
 <?php foreach($employeeList as $EMP) {echo "<option value = $EMP->id>
     $EMP->name</option>";}
     ?>
     </select></label><br>
+    
+<label>เงื่อนไขชำระ(เครดิต/มัดจำ)<input type="text" name="condiPrice"/></label><br>
+
+<label>มัดจำ/เครดิต<input type="text" name="deposit"/></label><br>
+    <p> (ถ้าเงื่อนไขการชำระเป็น'เครดิต' ให้กรอกเลข '0')</p>
+
 
 <input type="hidden"name="controller"value="quotation"/>
 

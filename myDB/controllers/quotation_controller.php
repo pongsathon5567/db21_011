@@ -17,14 +17,14 @@ class QuotationController
     public function QuotationAdd()
     {
 
-        $quotationID=$_GET['quotationID'];
-        $date=$_GET['date'];
+        $Q_ID=$_GET['quotationID'];
+        $Q_DATE=$_GET['date'];
         $customer=$_GET['cusName'];
         $employee=$_GET['empName'];
-        $condiPrice=$_GET['condiPrice'];
-        $deposit=$_GET['deposit'];
-        $p=-1;
-        Quotation::Add($quotationID,$date,$customer,$employee,$condiPrice,$deposit,$p);
+        $Q_CONDIPrice=$_GET['condiPrice'];
+        $Q_DEPOSIT=$_GET['deposit'];
+        $P=-1;
+        Quotation::Add($Q_ID,$Q_DATE,$customer,$employee,$Q_CONDIPrice,$Q_DEPOSIT,$P);
 
         QuotationController::index();
     }
@@ -47,14 +47,14 @@ class QuotationController
 
     public function update()
     {
-        $quotationID=$_GET['quotationID'];
-        $date=$_GET['date'];
+        $Q_ID=$_GET['quotationID'];
+        $Q_DATE=$_GET['date'];
         $customer=$_GET['cusName'];
         $employee=$_GET['empName'];
-        $condiPrice=$_GET['condiPrice'];
-        $deposit=$_GET['deposit'];
+        $Q_CONDIPrice=$_GET['condiPrice'];
+        $Q_DEPOSIT=$_GET['deposit'];
         $oldID=$_GET['oldID'];
-        Quotation::Update($quotationID,$date,$customer,$employee,$qCDP,$qDeposit,$oldID);
+        Quotation::Update($Q_ID,$Q_DATE,$customer,$employee,$Q_CONDIPrice,$Q_DEPOSIT,$oldID);
 
         QuotationController::index();
     }
@@ -67,7 +67,7 @@ class QuotationController
     }
     public function delete()
     {
-        $id=$_GET[''];
+        $id=$_GET['quotationID'];
         Quotation::delete($id);
         QuotationController::index();
     }

@@ -8,14 +8,18 @@ function call($controller, $action){
 	{
 		case "pages":	$controller = new PagesController();
 						break;
+
 		case "quotation" :  require_once("models/quotationModel.php");
 							require_once("models/employeeModel.php");
 							require_once("models/customerModel.php");
 							$controller = new QuotationController();
 							break;
+							
         case "detailquotation" :  require_once("models/DetailQuotationModel.php");
-                        	$controller = new DetailQuotationController();
-                            break;                    
+								  require_once("models/quotationModel.php");
+								  require_once("models/stockofproductModel.php");
+							      $controller = new DetailQuotationController();
+								  break;                    
                                                 
 	}
 

@@ -1,17 +1,18 @@
 <?php
 class Quotation
 {
-    public $quotationID,$date,$cusName,$empName,$cusAddr,$cusID,$empID,$condiPrice,$deposit; 
+    public $quotationID,$date,$cusName,$empName,$cusAddr; 
+    public $cusID,$empID,$condiPrice,$deposit;
 
-    public function __construct($quotationID,$quotationDate,$cusName,$cusAddr,$cusPhone,$empName,$cusID,$empID,$condiPrice,$deposit)
+    public function __construct($quotationID,$date,$cusName,$cusAddr,$cusPhone,$empName,$cusID,$empID,$condiPrice,$deposit)
     {
         $this->quotationID = $quotationID;
         $this->date = $date;
         $this->cusName = $cusName;
+        $this->empName = $empName;
         $this->cusAddr = $cusAddr;
         $this->cusPhone = $cusPhone;
-        $this->empName = $empName;
-
+        
         $this->cusID = $cusID;
         $this->empID = $empID;
         $this->condiPrice = $condiPrice;
@@ -29,10 +30,10 @@ class Quotation
             $Q_id = $my_row[quotationID];
             $Q_date = $my_row[date];
             $Cus_name = $my_row[cusName];
+            $Emp_name = $my_row[empName];
             $Cus_addr = $my_row[cusAddr];
             $Cus_phone = $my_row[cusPhone];
-            $Emp_name = $my_row[empName];
-
+            
             $Cus_id = $my_row[cusID];
             $Emp_id = $my_row[empID];
             $Q_condiprice = $my_row[condiPrice];
@@ -48,7 +49,7 @@ class Quotation
     { 
        require("connection_connect.php");
        $float = (float)$Q_DEPOSIT;
-       $sql = "INSERT INTO `quotation` (`quotationID`, `date`, `empID`, `cusID`, `condiPrice`, `deposit`, `ProductOrder_M`) VALUES ('$Q_ID', '$Q_DATE', '$CUS_ID', '$EMP_ID', '$Q_CONDIPRICE', '$Q_DEPOSIT', '$P')";
+       $sql = "INSERT INTO `quotation` (`quotationID`, `date`, `empID`, `cusID`, `condiPrice`, `deposit`, `ProductOrder_M`) VALUES ('$Q_ID', '$Q_DATE', '$EMP_ID', '$CUS_ID', '$Q_CONDIPRICE', '$Q_DEPOSIT', '$P')";
        $result = $conn->query($sql);
        require("connection_close.php");
        return  ;
@@ -64,10 +65,10 @@ class Quotation
             $Q_id = $my_row[quotationID];
             $Q_date = $my_row[date];
             $Cus_name = $my_row[cusName];
+            $Emp_name = $my_row[empName];
             $Cus_addr = $my_row[cusAddr];
             $Cus_phone = $my_row[cusPhone];
-            $Emp_name = $my_row[empName];
-
+            
             $Cus_id = $my_row[cusID];
             $Emp_id = $my_row[empID];
             $Q_condiprice = $my_row[condiPrice];
@@ -89,9 +90,9 @@ class Quotation
         $Q_id = $my_row[quotationID];
         $Q_date = $my_row[date];
         $Cus_name = $my_row[cusName];
-        $Cus_addr = $my_row[cusAddr];
-        $Cus_phone = $my_row[cusPhone];
         $Emp_name = $my_row[empName];
+        $Cus_addr = $my_row[cusAddr];
+        $Cus_phone = $my_row[cusPhone];       
 
         $Cus_id = $my_row[cusID];
         $Emp_id = $my_row[empID];
