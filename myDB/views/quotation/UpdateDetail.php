@@ -25,7 +25,7 @@
 <label>เงื่อนไขชำระ <input type="text" name="condiPrice"
         value="<?php echo $quotation->condiPrice;?>"/></label><br>
 
-<label>มัดจำ/เครดิต<input type="text" name="deposit"
+<label>มัดจำ % <input type="text" name="deposit"
         value="<?php echo $quotation->deposit;?>"/></label><br>
         <p> (ถ้าเงื่อนไขการชำระเป็น'เครดิต' ให้กรอกเลข '0')</p>
       
