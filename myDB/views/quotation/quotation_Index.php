@@ -7,6 +7,7 @@
 <td>ที่อยู่ลูกค้า</td>
 <td>เบอร์โทร</td>
 <td>เงื่อนไขชำระ</td>
+<td>เปอร์เซ็น</td>
 <td>update</td>
 <td>delete</td>
 </tr>
@@ -31,7 +32,8 @@ search</button>
     <td>$quotation->cusAddr</td>
     <td>$quotation->cusPhone</td>
     <td>$quotation->condiPrice</td>
-    
+    <td>$quotation->deposit</td>
+
     <td><a href=?controller=quotation&action=UpdateDetail&quotationID=$quotation->quotationID>update</a></td>
     <td><a href=?controller=quotation&action=DeleteDetail&quotationID=$quotation->quotationID>delete</a></td>
     </tr>"; 
