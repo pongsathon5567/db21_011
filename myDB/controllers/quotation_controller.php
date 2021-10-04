@@ -55,13 +55,7 @@ class QuotationController
         $Q_DEPOSIT=$_GET['deposit'];
         $oldID=$_GET['oldID'];
 
-        echo $Q_ID;
-        echo $Q_DATE;
-        echo $customer;
-        echo $employee;
-        echo $Q_CONDIPrice;
-        echo $Q_DEPOSIT;
-        echo $oldID;
+
         Quotation::Update($Q_ID,$Q_DATE,$customer,$employee,$Q_CONDIPrice,$Q_DEPOSIT,$oldID);
 
         QuotationController::index();
